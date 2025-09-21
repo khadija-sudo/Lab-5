@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+// Tail recursion
+int sumTail(int n, int total = 0) {
+    if (n == 0) return total;
+    return sumTail(n - 1, total + n);  
+}
+
+// Non-tail recursion
+int sumNonTail(int n) {
+    if (n == 0) return 0;
+    return n + sumNonTail(n - 1);  
+}
+int main() {
+    int n;
+    cout << "Enter a number for sum calculation: ";
+    cin >> n;
+
+    cout << "Sum using tail recursion: " << sumTail(n) << endl;
+    cout << "Sum using non-tail recursion: " << sumNonTail(n) << endl;
+
+    return 0;
+}
+//Tail recursion can be optimized by compiler which makes it a smaller call stack.
+
+//Non-tail recursion builds up call stack and adds during returning phase so larger stack.
